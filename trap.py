@@ -1,8 +1,9 @@
 import nltk
 from nltk.corpus import words
-import statistics
+from statistics import median, mode
 from itertools import combinations
 import sys
+import csv
 
 # 1. Avoid trap if possible
 # 2. Break the trap early if possible 
@@ -28,6 +29,12 @@ def same_indx(w1, w2, indx):
 
 def avg(w):
     return sum(map(len,w))/len(w)
+
+def median_(w):
+    return median(map(len,w))
+
+def mode_(w):
+    return mode(map(len,w))
 
 worlde = [i.upper() for i in words.words() if len(i) == 5]
 
@@ -61,5 +68,6 @@ for i in four_common:
         if len(l) > 1:
             fl.append(l)
 
-print(fl)
 print(avg(fl))
+print(median_(fl))
+print(mode_(fl))
